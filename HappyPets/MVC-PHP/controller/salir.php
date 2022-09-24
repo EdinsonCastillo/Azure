@@ -10,6 +10,6 @@
 	$_SESSION = array();
 	session_destroy();
 	session_write_close();
-	header("Location: ../index.html");
+	header("Location: ../../index.html");
 	 
 ?>

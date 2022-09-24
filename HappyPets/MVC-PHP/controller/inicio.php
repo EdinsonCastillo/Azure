@@ -23,16 +23,16 @@ if($_POST["inicio"]){
 				/// dependiendo del tipo de usuario lo redireccinamos a una pagina
 		/// si es un client
 		if($_SESSION['tipo'] == 1){
-			header("Location: ../model/admin/index1.php"); 
+			header("Location: ../model/admin/indexA.php"); 
 			exit();
 		}
 		/// si es un vendedor
 		elseif($_SESSION['tipo'] == 2 || $_SESSION['tipo'] == 3){
-			header("Location: ../model/funcionario/index1.php"); 
+			header("Location: ../model/funcionario/indexF.php"); 
 			exit();		
 		}
 		elseif($_SESSION['tipo'] == 4){
-			header("Location: ../model/propietario/index1.php"); 
+			header("Location: ../model/propietario/indexP.php"); 
 			exit();	
 		}
 	}else{

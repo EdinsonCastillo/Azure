@@ -5,7 +5,6 @@ session_start();
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) 
 {
 $contra = $_POST['cont'];
-$conta = $_POST['conta'];
 
 if ($_POST['cont']== "" || $_POST['conta']== "" )
 	{
@@ -15,12 +14,11 @@ if ($_POST['cont']== "" || $_POST['conta']== "" )
 	else
 	{
     
-        $email = $_SESSION['email'];
-        $insertSQL = "UPDATE usuario SET clave ='$contra'  WHERE email = '$email'";
+        $doc = $_SESSION['ced'];
+        $insertSQL = "UPDATE user SET password ='$contra'  WHERE cedula = '$doc'";
         mysqli_query($mysqli, $insertSQL) or die(mysqli_error());  	
-
              echo '<script>alert (" Cambio de Clave Existosa ");</script>';
-             echo '<script>window.location="../index.html"</script>';
+            echo '<script>window.location="../index.html"</script>';
     
     }
    
@@ -30,15 +28,15 @@ if ($_POST['cont']== "" || $_POST['conta']== "" )
 if($_POST["inicio"])
 {
 	// inicia sesion para los usuarios
-	$correo = $_POST["email"];
-	$sql="select * from usuario where email = '$correo'"; 	
+	$doc = $_POST["doc"];
+	$sql="select * from user where cedula = '$doc'"; 	
 	$query=mysqli_query($mysqli, $sql);
 	$fila=mysqli_fetch_assoc($query);
 	
 	if($fila)
     {		
-		/// si el email es correcto.
-        $_SESSION['email']=$fila['email'];
+		/// si el usario  son correctas.
+        $_SESSION['ced']=$fila['cedula'];
     
     ?>
         <html>
@@ -57,10 +55,10 @@ if($_POST["inicio"])
                             <!--crea formularios-->
                             <label for="usuario">Nueva Contraseña</label>
                             <!-- etiqueta lo que se le muestra el usuario -->
-                            <input type="password" name="cont" id="cont" placeholder="Nueva Clave" >
+                            <input type="text" name="cont" id="cont" placeholder="Nueva Clave" >
                             <label for="usuario">Confirme Contraseña</label>
                             <!-- etiqueta lo que se le muestra el usuario -->
-                            <input type="password" name="conta" id="conta" placeholder="Confirme Clave">
+                            <input type="text" name="conta" id="conta" placeholder="Confirme Clave">
                             <!-- Caja de texto donde el usuario digite texto -->
                             <input type="submit" name="inicio" id="inicio" value="cambiar" >
                             <input type="hidden" name="MM_update" value="form1" />
@@ -73,8 +71,8 @@ if($_POST["inicio"])
     }  
    else
     {
-        echo '<script>alert (" El email no exite en la Base de Datos");</script>';
-        echo '<script>window.location="../validarcorreo.html"</script>';
+    echo '<script>alert (" El documento no exite en la Base de Datos");</script>';
+    echo '<script>window.location="../validarcorreo.html"</script>';
     }
 }
 ?>

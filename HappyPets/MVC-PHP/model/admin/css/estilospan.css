@@ -1,0 +1,293 @@
+*{
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+table.t1{
+	color: #fff;
+	font-weight: bold;
+	background:url("../img/fondo2.jpg");
+	justify-content: center;
+	align-items: center;
+  }
+ table.t1 th, table.t1 td {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	justify-content:center;
+  }
+
+body{
+	font-family: 'Century Gothic';
+	background-color: #fff;
+}
+
+table.t3{
+
+	margin-left: auto;
+	margin-right: auto;
+	width:100%
+
+}
+
+table.t3, table.t3 td{
+	font: 12px Arial, Helvetica, sans-serif; 
+	justify-content: center;
+	text-align: center;
+}
+
+/*
+table.t3 thead
+{
+	position: absolute;
+}
+table.t3 tbody
+{
+	display: block; 
+	overflow: auto; 
+	position: relative;
+	top: -50px;
+	width: 100%;
+}
+*/
+
+table.t3 {width:100%;border-collapse:collapse;}
+table.t3 td{text-align:center;padding:.5em;border:none solid #fff;text-size-adjust: 10px;}
+table.t3 th, table.t3 td{text-align:center;padding:.5em;border:1px solid #fff;}
+table.t3 th{background:#4f8798 url(tr_back.gif) repeat-x;color:#fff;}
+table.t3 td{background: #fffbff;}
+
+table.t3 th{background:#328aa4 }  /* Fondo de título*/
+table.t3 tr.odd td{background:#a5e1dd;}
+
+table.t3 th.over, table.t3 tr.even table.t3 th.over, table.t3 tr.odd table.t3 th.over{background:#4a98af;}
+table.t3 th.down, table.t3 tr.even table.t3 th.down, table.t3 tr.odd table.t3 th.down{background:#cf9450;}
+/*table.t3 th.selected, table.t3 tr.even th.selected, table.t3 tr.odd th.selected{}*/
+
+table.t3 td.over, table.t3 tr.even td.over,table.t3  tr.odd td.over{background:#e7eaec;}
+table.t3 td.down, table.t3 tr.even td.down, table.t3 tr.odd td.down{background:#7be7dc;color:#fff;}
+table.t3 td.selected, table.t3 tr.even td.selected,  table.t3 tr.odd td.selected{background:#b74810;color:#555;}
+
+/* use this if you want to apply different styleing to empty table cells*/
+table.t3 td.empty, table.t3 tr.odd td.empty, table.t3 tr.even td.empty{background:#fff;}
+
+/* *******************  FIN CSS para la tabla de trabajo *********************/
+
+
+a{
+	text-decoration: none;
+}
+
+ul{
+	list-style: none;
+}
+
+img{
+	max-width: 100%;
+}
+
+/*==========================================   text-align: center;*/
+
+.title{
+	width: 100%;
+	background: #08f437;
+	height: 157px;
+	background:url("../img/banner.jpg");
+	display: flex;
+	align-items: center;
+	justify-content: left;
+}
+
+.title h1{
+	color: rgb(42, 5, 154);
+	font-size: 25px;
+	font-weight: 500;
+	text-align: top;
+	font-weight: bold;
+	/*width: 800px;*/
+}
+h2{
+	color: rgb(42, 5, 154);
+	top: 100px;
+	font-size: 20px;
+	font-weight: 500;
+	text-align: top;
+	font-weight: bold;
+	/*width: 800px;*/
+}
+
+.navegacion{
+	width: 100%;
+	background: #1c1c1c;
+	
+	display: flex;
+	justify-content: center;
+	height: 5%;
+}
+
+.barra{
+	width: 100%;
+	background: #1c1c1c;
+	background:url("../img/fondo2.jpg!d");
+	display: flex;
+	justify-content: center;
+	height: 2%;
+}
+
+.menu{
+	width: 1000px;
+	display: flex;
+	flex-wrap: wrap;
+	height: 120px;
+}
+
+.menu li{
+	flex-basis: 0;
+	flex-grow: 1;
+	border-right: 1px solid #363636;
+	position: relative;
+}
+
+.menu .first-item{
+	border-left: 1px solid #363636;
+}
+
+.menu li a{
+	display: flex;
+	flex-direction: column;
+	font-size: 18px;
+}
+
+.menu .imagen{
+	position: absolute;
+	bottom: 0;
+	right: 30px;
+	width: 0%;
+	z-index: 20;
+
+	-webkit-transition: all 300ms cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+   -moz-transition: all 300ms cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+     -o-transition: all 300ms cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+        transition: all 300ms cubic-bezier(0.445, 0.050, 0.550, 0.950); /* easeInOutSine */
+
+-webkit-transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+   -moz-transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+     -o-transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+        transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950); /* easeInOutSine */
+
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(136, 156, 179, 0.51);
+-moz-box-shadow: 0px 0px 5px 0px rgba(136, 156, 179, 0.51);
+box-shadow: 0px 0px 5px 0px rgba(136, 156, 179, 0.51);
+}
+
+.menu li a .text-item{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: #fff;
+	top: 0%;
+	position: absolute;
+	z-index: 10;
+
+	-webkit-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1); /* older webkit */
+-webkit-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+   -moz-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+     -o-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+        transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+
+-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1); /* older webkit */
+-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+   -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+     -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+        transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+}
+
+.menu li a .down-item{
+	position: absolute;
+	top: 0%;
+	width: 100%;
+	height: 100%;
+	background: #1C1C1C;
+
+	-webkit-transition: all 200ms cubic-bezier(0.215, 0.610, 0.355, 1.000); 
+   -moz-transition: all 200ms cubic-bezier(0.215, 0.610, 0.355, 1.000); 
+     -o-transition: all 200ms cubic-bezier(0.215, 0.610, 0.355, 1.000); 
+        transition: all 200ms cubic-bezier(0.215, 0.610, 0.355, 1.000); /* easeOutCubic */
+
+-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); 
+   -moz-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); 
+     -o-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); 
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* easeOutCubic */
+}
+
+.menu li:hover .down-item, .menu li:hover .text-item{
+	top: 100%;
+	height: 115%;
+}
+
+.menu li:hover .imagen{
+	width: 100%;
+	right: 0px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: 100px;
+  }
+
+  .ingreso
+  {
+	position: absolute;
+	left: 0px;
+	top: 208px;
+	width: 100%;
+	height: 160px;
+	padding: 0 0px;
+  }
+
+  .encabezado
+  {
+	position: absolute;
+	left: 90px;
+	top:  370px;
+	width: 85%;
+	height: 50px;
+	padding: 0 5px;
+  }
+
+  .general 
+  {
+	position: absolute;
+	left: 40px;
+	top: 425px;
+	width: 95%;
+	height: 270px;
+	padding: 0 2px;
+	overflow:scroll;
+    overflow-x:hidden;
+	
+  }
+
+div#marco1, div#marco2, div#marco3 {
+	height: 100%;
+	width: 100%;
+  }
+  
+
+	/*border: none;overflow: hidden;position:absolute;  	border:  solid 1px #ccc;
+	overflow:scroll;
+    overflow-x:hidden;border:  solid 1px #ccc;
+	
+	
+		
+	
+	
+	*/
