@@ -1,0 +1,136 @@
+
+.control
+{
+
+ font-size: 16px;
+
+}
+  
+ 
+ .encabezado_izq
+  {
+	position: absolute;
+	left: 240px;
+	top: 450px;
+	width:auto;
+	height: auto;
+	padding: 0 5px;
+	border:  solid 1px #ccc;
+  }
+
+  .general_izq
+  {
+	position: absolute;
+	left: 130px;
+	top: 480px;
+	width: 500px;
+	height: auto;
+	padding: 0 5px;
+	overflow:auto;
+    overflow-x:hidden;
+	border:  solid 1px #ccc;
+  }
+
+  .imagen_fondo_izq
+  {
+	position: absolute;
+	left: 830px;
+	top: 420px;
+	width: auto;
+	height: auto;
+	padding: 0 5px;
+	border:  solid 1px #ccc;
+
+	/*border-style: inset;*/
+  }
+
+
+  .imagen_fondo_der
+  {
+	position: absolute;
+	left: 130px;
+	top: 420px;
+	width: 500px;
+	height: auto;
+	padding: 0 5px;
+
+	/*border-style: inset;*/
+  }
+
+div#marco_izq, div#marco_der {
+	height: 100%;
+	width: 100%;
+  }
+
+  .encabezado_der
+  {
+	position: absolute;
+	left: 940px;
+	top: 450px;
+	width:auto;
+	height: auto;
+	padding: 0 5px;
+  }
+
+  .general_der
+  {
+	position: absolute;
+	left: 830px;
+	top: 480px;
+	width: 500px;
+	height: auto;
+	padding: 0 5px;
+	overflow:auto;
+    overflow-x:hidden;
+  }
+  /* *******************  CSS para la tabla de trabajo 	margin: 0 auto; *********************/
+table.t2{
+
+	margin-left: auto;
+	margin-right: auto;
+	width:0%
+
+}
+
+table.t2, table.t2 td{
+	font: 16px Arial, Helvetica, sans-serif; 
+	justify-content: center;
+	text-align: center;
+}
+
+/*
+table.t2 thead
+{
+	position: absolute;
+}
+table.t2 tbody
+{
+	display: block; 
+	overflow: auto; 
+	position: relative;
+	top: -50px;
+	width: 100%;
+}
+*/
+
+table.t2 {width:70%;border-collapse:collapse;}
+table.t2 td{text-align:center;padding:.5em;border:none solid #fff;text-size-adjust: 15px;}
+table.t2 th, table.t2 td{text-align:center;padding:.5em;border:1px solid #fff;}
+table.t2 th{background:#4f8798 url(tr_back.gif) repeat-x;color:#fff;}
+table.t2 td{background: #fffbff;}
+
+table.t2 th{background:#328aa4 }  /* Fondo de título*/
+table.t2 tr.odd td{background:#a5e1dd;}
+
+table.t2 th.over, table.t2 tr.even table.t2 th.over, table.t2 tr.odd table.t2 th.over{background:#4a98af;}
+table.t2 th.down, table.t2 tr.even table.t2 th.down, table.t2 tr.odd table.t2 th.down{background:#cf9450;}
+/*table.t2 th.selected, table.t2 tr.even th.selected, table.t2 tr.odd th.selected{}*/
+
+table.t2 td.over, table.t2 tr.even td.over,table.t2  tr.odd td.over{background:#e7eaec;}
+table.t2 td.down, table.t2 tr.even td.down, table.t2 tr.odd td.down{background:#7be7dc;color:#fff;}
+table.t2 td.selected, table.t2 tr.even td.selected,  table.t2 tr.odd td.selected{background:#b74810;color:#555;}
+
+/* use this if you want to apply different styleing to empty table cells*/
+table.t2 td.empty, table.t2 tr.odd td.empty, table.t2 tr.even td.empty{background:#fff;}
+
+/* *******************  FIN CSS para la tabla de trabajo *********************/

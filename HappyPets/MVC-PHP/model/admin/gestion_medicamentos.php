@@ -9,6 +9,7 @@
 	$idusuario = $usua['id_usu'];
     $usubus = "";   
     $id = array();
+    $nombre = "";
 
     if ((isset($_POST["MM_buscar"])) && ($_POST["MM_buscar"] == "form1")) 
     {

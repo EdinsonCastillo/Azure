@@ -180,8 +180,8 @@
             $raza      =  $_POST['7'];
             $idvet     =  $_POST['8']; 
 
-           // $producto=$_POST['seleccion'];
-                $sql7 = "UPDATE mascota_cliente SET nombre = '$nombremas', color = '$color', especie = '$especie', raza = '$raza', id_vet = '$idvet'
+
+                $sql7 = "UPDATE mascota_cliente SET nombre = '$nombremas', color = '$color', especie = '$especie', id_vet = '$idvet'
                  WHERE id_mascli ='$id_MAS'";
                 mysqli_query($mysqli, $sql7) or die(mysqli_error($mysqli));
                 echo '<script>alert (" Usuario Actualizado");</script>';
@@ -190,7 +190,7 @@
   // Opción de eliminación de registros //
     if ((isset($_POST["eliminar"])) && ($_POST["MM_eliminar"] == "form4")) 
     {
-        //  consulta tipo de usurio    
+        //  consulta tipo de usuario    
         $usubus = $_POST['1'];
         if ($_POST['1']== "" )
         {
@@ -296,24 +296,43 @@
                     <th width="40%">
                         <div class="form-input">
                             <label for="first_name" class="required">Id Usuario </label>
+
+
                             <input type="number" name="id_usuario" id="first_name"required />
 
+                            <input type="submit" name="buscar" id="buscar" value="Buscar mascota" onclick="tipo();"/>
+
                             <label for="first_name" class="required">Nombre mascota </label>
+
+                            <?php
+                            $sql10 = "SELECT * FROM mascota_cliente where id";
+                            $tipo = mysqli_query($mysqli, $sql10) or die(mysqli_error());
+                            $id = array();
+                            $nom_tipousuario = array();
+                            $nom = "";
+                            $i = 0;
+                            $val = 0;
+                                while ($tip = mysqli_fetch_assoc($tipo))
+                                {
+                                    $id[$i] =$tip['id_tipousu'];
+                                    $nom_tipousuario[$i] = $tip['tipousu'];
+                                    if ( $tip['tipousu'] == $tipousuario )
+                                        $val = $tip['id_tipousu'];
+                                    $i = $i +1;                                            
+                                }                                         
+                                $arreglo = array("Activo","Inactivo");
+                            ?>  
+
+
                             <input type="text" name="nombremas" id="nomas" required />
 
-                            <input type="submit" name="buscar" id="buscar" value="Buscar mascota" onclick="tipo();"/>
+                            
                             <input type="hidden" name="operacion" value="1" />
                             <input type="hidden" name="MM_buscar" value="form1" />
                         </div>                                
         </form>                                                                  
                     </th>               
-                    <th>  
-                        
-                    <?php
-
-                    ?>
-
-
+                    <th>                                
                         <div class="select-list">
                             <label (id ="label" for="mascota" class="required">Escoger operación: </label>
                             
@@ -322,12 +341,8 @@
                                 <option data-typeid="1" value="1">Editar</option>
                                 <!--<option data-typeid="2" value="2">Eliminar</option>-->
                                 <option data-typeid="2" value="2">Insertar</option>
-                                <option data-typeid="3" value="3">Asignar veterinario</option>
                             </select>
                         </div>
-
-
-
                         <script type="text/javascript">
                             $(document).on('change', 'select.form-con', function() 
                             {
@@ -340,18 +355,15 @@
                                     //document.getElementById('eliminar').disabled = true
                                     document.getElementById('a').readOnly = true
                                     document.getElementById('seleccion').style.display = "none"
-                                    document.getElementById('b').style.display = "inline"
+                                    document.getElementById('b').style.display = "inline";
                                     document.getElementById('b').readOnly = true
                                     document.getElementById('j').style.display = "none"
                                     document.getElementById('c').style.display = "inline"
-                                    document.getElementById('h').style.display = "none"
-                                    document.getElementById('asignar').style.display = "inline"
-                                    document.getElementById('i').style.display = "none"
+                                    document.getElementById('h').style.display = "inline"
                                     document.getElementById('c').readOnly = true
-                                    document.getElementById('seleccion').style.display = "none" 
-                                    //document.getElementById('i').readOnly = true
+                                    document.getElementById('seleccion').style.display = "none"; 
+                                    document.getElementById('i').readOnly = false
                                     document.getElementById('etiqueta').style.display = "inline"
-                                    
                                     
                                 }
                                /* else if(a == 2) //Eliminar
@@ -373,36 +385,17 @@
                                     document.getElementById('a').readOnly = false
                                     document.getElementById('k').style.display = "inline"
                                     document.getElementById('j').style.display = "inline"                                                                       
-                                    document.getElementById('j').readOnly = true
-                                    document.getElementById('b').style.display = "none"
-                                    document.getElementById('c').style.display = "none"
-                                    document.getElementById('h').style.display = "none"
-                                    document.getElementById('i').style.display = "none"  
-                                    document.getElementById('i').readOnly = true
-                                    document.getElementById('asignar').style.display = "inline"
-                                    document.getElementById('seleccion').style.display = "inline"                                  
+                                    document.getElementById('i').readOnly = true;
+                                    document.getElementById('b').style.display = "none";
+                                    document.getElementById('c').style.display = "none";
+                                    document.getElementById('h').style.display = "inline"; 
+                                    document.getElementById('i').style.display = "inline";  
+                                    document.getElementById('i').readOnly = true;  
+                                    document.getElementById('seleccion').style.display = "inline";                                   
                                     $("#a").val(""); $("#b").val(""); $("#c").val(""); $("#d").val(""); $("#e").val(""); $("#f").val(""); 
                                     $("#g").val(""); $("#h").val(""); $("#i").val(""); $("#j").val(""); $("#k").val("");
                                     
-                                } 
-                                
-                                else if (a==3)  // asignar veterinario
-                                {
-                                    document.getElementById('editar').disabled = false
-                                    document.getElementById('insertar').disabled = true 
-                                    document.getElementById('a').readOnly = true
-                                    document.getElementById('b').readOnly = true
-                                    document.getElementById('c').readOnly = true
-                                    document.getElementById('d').readOnly = true
-                                    document.getElementById('e').readOnly = true
-                                    document.getElementById('f').readOnly = true
-                                    document.getElementById('g').readOnly = true
-                                    document.getElementById('h').style.display = "none"
-                                    document.getElementById('i').style.display = "none"
-                                    document.getElementById('asignar').style.display = "inline"
-
-
-                                }
+                                }                          
                             });
                         </script>
                     </th>
@@ -501,7 +494,7 @@
                                                                                                         $especie   = $mas['ESPECIE'];6
                                                                                                         $raza      = $mas['RAZA_MASCOTA'];7
                                                                                                         $idvet     = $mas['ID_VETERINARIO']; 8
-                                                                                                        $vete	   = $mas['NOMBRE_VETERINARIO'];9
+                                                                                                        $vete	   = $mas['NOMBRE_VETERINARIO'];
                                                                                                         $nompro    = $mas['NOMBRE_PROPIETARIO'];3	
                             -->
                                             <td><input type = "text" id = "a" name="1" style="width : 150px; heigth : 1px" value= "<?php echo $id_MAS   ?>" /></td>
@@ -542,7 +535,7 @@
                                                     echo '<option data-typeid="'.$id[$n].'" value="'.$id[$n].'">'.$nom_tipomascota[$n].' </option>';
                                             }
                                         ?>               
-                                           <!-- <input type = "hidden" id = "h" name="8" style="width : 80px; heigth : 1px" placeholder = "H"  value= "<?php echo $idtipousuario?>" /> -->                                          
+                                            <input type = "hidden" id = "h" name="8" style="width : 80px; heigth : 1px" placeholder = "H"  value= "<?php echo $idtipoMas?>" />                                           
                                     </td>
                                     <div class="select-list">
                                        
@@ -569,64 +562,11 @@
                                             <td><input type = "text" hidden placeholder = "id usu" id = "k" name="11" style="width : 80px; heigth : 1px" value= "<?php echo $idusu?>" />
                                                 <input type = "text" id = "c" name="3" style="width : 150px; heigth : 1px" value= "<?php echo $nompro?>" /></td>
                                             <td><input type = "text" id = "d" name="4" style="width : 150px; heigth : 1px" value= "<?php echo $nombremas?>" /></td>
-                                            <td><input type = "text" id = "e" name="5" style="width : 80px; heigth : 1px" value= "<?php echo $color?>" /></td>
+                                            <td><input type = "text" id = "e" name="5" style="width : 130px; heigth : 1px" value= "<?php echo $color?>" /></td>
                                             <td><input type = "text" id = "f" name="6" style="width : 80px; heigth : 1px" value= "<?php echo $especie?>" /></td>
                                             <td><input type = "text" id = "g" name="7" style="width : 80px; heigth : 1px" value= "<?php echo $raza?>" /></td>
                                             <td><input type = "text" hidden placeholder = "id veterinario" id = "h" name="8" style="width : 80px; heigth : 1px" value= "<?php echo $idvet?>" />
-                                            
-                                            <?php
-                                                    $tipoUsu = "SELECT concat (U.Nombres, ' ', U.Apellidos) AS Nombre, U.id_usu AS Documento FROM usuario U WHERE U.id_tipousu = 3";
-                                                    $veterinario = mysqli_query($mysqli, $tipoUsu) or die(mysqli_error());
-                                                    $id = array();
-                                                    $nom_veterinario = array();
-                                                    $nom = "";
-                                                    $i = 0;
-                                                    $val = 0;
-                                                        while ($tip = mysqli_fetch_assoc($veterinario))
-                                                        {
-                                                            $id[$i] =$tip['Documento'];
-                                                            $nom_veterinario[$i] = $tip['Nombre'];                                                            
-                                                            $i = $i +1;                                            
-                                                        }                                         
-                                                       
-                                                ?> 
-
-
-
-
-                                                <select class = "asignar" id="asignar" name= "asignar" hidden>
-                                    <option value ="0" selected  disabled="">-- Selecciona --</option>
-                                    <?php
-                                            for ($n = 0; $n<$i; $n++)
-                                            {
-                                                $ot = $n+1;
-                                                if ( $ot == $val)
-                                                { 
-                                                    echo '<option data-typeid="'.$id[$n].'" value="'.$id[$n].'" selected >'.$nom_veterinario[$n].' </option>';
-                                                }
-                                                else
-                                                    echo '<option data-typeid="'.$id[$n].'" value="'.$id[$n].'">'.$nom_veterinario[$n].' </option>';
-                                            }
-                                        ?>    
-
-                                    
-                                    <div class="select-list">
-                                       
-
-                                            <script type="text/javascript"> 
-                                    $(document).on('change', 'select.asignar', function()  
-                                    {
-                                        var a = $('select.asignar option[value="'+$(this).val()+'"]').attr("data-typeid")
-                                                            
-                                           
-                                            document.getElementById('h').value = a                                   
-                                            
-
-                                    });
-
-                                </script>                        
-
-                                            <input type = "text" id = "i" name="9" style="width : 200px; heigth : 1px" value= "<?php echo $vete?>" /></td>                                            
+                                            <input type = "text" id = "i" name="9" style="width : 80px; heigth : 1px" value= "<?php echo $vete?>" /></td>                                            
                                             
                                         
                                     </div>
@@ -673,11 +613,47 @@
                         <input type="text" name="tipou" id="tipou" value = ""placeholder="Tipo de Usuario, Estado" hidden/>                      
                         <button type="button" id="Bsubmit" hidden>Buscar</button> 
                 </h2>
-                <h2 align="center">Listado de Mascotas <label id="mensaje"></label></h2>     
+                <h2 align="center">Listado de Mascotas <label id="mensaje"></label></h2> 
+                
+                <div class = "e">
+                        <input type = "submit" name="BGsubmit" id="BGsubmit" value="BGsubmit" hidden/>
+                        <input type = "hidden" name="MM_BGsubmit" value="formBG" />
+                        <input type="text" name="sq" id="sq"  value ="1" hidden/>
+                        <input type="text" name="msj" id="msj"  value ="" hidden/>
+                        <input type="text" name="sql" id="sql"  value ="1" hidden/>
+                        <label>Búsquedas Generales</label>
+                        <select class="form-cont">
+                            <option selected="" disabled="">-- Selecciona --</option>
+                            <option data-typeid="1" value="1">Propietario</option>
+                            <option data-typeid="2" value="2">Veterinario</option>
+                            <option data-typeid="3" value="3">General</option>
+                        </select>
+                        <?php
+                        $sqlGral = "SELECT * FROM mascota_cliente";
+                        $pets = mysqli_query($mysqli, $sqlGral) or die(mysqli_error());
+                        $id = array();
+                        $nom_tipomascota = array();
+                        $nom = "";
+                        $i = 0;
+                        $val = 0;
+                        while ($tip = mysqli_fetch_assoc($pets))
+                        {
+                            $id[$i] =$tip['id_mascli'];
+                            $nom_tipomascota[$i] = $tip['id_tipomas'];
+                            if ( $tip['id_tipomas'] == $tipoMas )
+                                $val = $tip['id_tipomas'];
+                            $i = $i +1;                                            
+                        }                     
+                        $arreglo = array("Activo","Inactivo");                    
+                        ?>                                          
+                        
             </div>
         </form>
        
-    </div>            
+    </div>  
+    
+    
+    
     <div class = "general">   
         <div class = "marco1"> 
             <table class="t3" border="1" cellspacing="2" cellpadding="2" >

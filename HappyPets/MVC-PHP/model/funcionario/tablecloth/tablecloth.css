@@ -1,0 +1,19 @@
+/* 
+
+	TableCloth	
+	by Alen Grakalic, brought to you by cssglobe.com
+	
+*/
+
+/* general styles */
+
+table.t, table.t td{
+	font:20% Arial, Helvetica, sans-serif; 
+}
+table.t {width:30%;border-collapse:collapse;margin:1em 0;}
+
+table.t th{background:#328aa4 }
+
+
+/* tablecloth styles */
+
